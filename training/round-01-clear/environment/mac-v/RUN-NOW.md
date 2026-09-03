@@ -134,6 +134,7 @@ cd "$HOME/codyssey"
 if [ -d codyssey-basic/.git ]; then
   cd codyssey-basic
   git status --short --branch
+  git remote set-url origin https://github.com/MetaStudy999/codyssey-basic.git
   git pull --ff-only
 else
   git clone https://github.com/MetaStudy999/codyssey-basic.git
@@ -148,20 +149,23 @@ bash environments/ubuntu/bootstrap.sh --check || {
 
 ### 2-3. B2-2 Repository 준비
 
+현재 Canonical Repository(기준 저장소)는 `MetaStudy999/codyssey-basic-git-collaboration`입니다.
+
 ```bash
 cd "$HOME/codyssey"
 
-if [ -d codyssey-basic-b2-2-git-team-collaboration/.git ]; then
-  cd codyssey-basic-b2-2-git-team-collaboration
+if [ -d codyssey-basic-git-collaboration/.git ]; then
+  cd codyssey-basic-git-collaboration
   git status --short --branch
+  git remote set-url origin https://github.com/MetaStudy999/codyssey-basic-git-collaboration.git
   git pull --ff-only
 else
-  git clone https://github.com/MetaStudy999/codyssey-basic-b2-2-git-team-collaboration.git
-  cd codyssey-basic-b2-2-git-team-collaboration
+  git clone https://github.com/MetaStudy999/codyssey-basic-git-collaboration.git
+  cd codyssey-basic-git-collaboration
 fi
 ```
 
-로컬 변경이 존재해 `git pull --ff-only`이 막히면 변경을 덮어쓰지 말고 STOP합니다.
+Repository Rename 이전의 로컬 디렉터리가 남아 있어도 자동 삭제하지 않습니다. 새 Canonical Directory를 별도로 clone해서 사용합니다. 로컬 변경이 존재해 `git pull --ff-only`이 막히면 변경을 덮어쓰지 말고 STOP합니다.
 
 ### 2-4. CORE 시스템 준비
 
@@ -215,7 +219,7 @@ Token, Password, 2FA code, recovery code, private key는 문서/채팅/Evidence�
 5개 인증이 끝나면 Ubuntu 관리자 세션에서:
 
 ```bash
-cd "$HOME/codyssey/codyssey-basic-b2-2-git-team-collaboration"
+cd "$HOME/codyssey/codyssey-basic-git-collaboration"
 
 sudo bash training/round-01-clear/environment/mac-v/verify-all-identities.sh \
   <github-A> <github-B> <github-C> <github-D> <github-E>
@@ -252,7 +256,7 @@ Simulation 전용 Repository 사용
 `codyssey01` / Account A에서:
 
 ```bash
-cd "$HOME/codyssey/codyssey-basic-b2-2-git-team-collaboration"
+cd "$HOME/codyssey/codyssey-basic-git-collaboration"
 
 bash training/round-01-clear/environment/mac-v/create-simulation-repo.sh
 ```
@@ -295,7 +299,7 @@ bash training/round-01-clear/environment/mac-v/verify-simulation-repo.sh \
 Repository Gate PASS 후 Ubuntu 관리자 세션에서:
 
 ```bash
-cd "$HOME/codyssey/codyssey-basic-b2-2-git-team-collaboration"
+cd "$HOME/codyssey/codyssey-basic-git-collaboration"
 
 sudo bash training/round-01-clear/environment/mac-v/prepare-simulation-clones.sh \
   <OWNER>/<SIMULATION-REPO>
