@@ -19,7 +19,7 @@ Reference Repository나 실제 3~5인 팀 Repository를 Simulation에 재사용�
 Linux user `codyssey01` / GitHub Account A에서 B2-2 Reference Repository 최신 상태를 확인한 뒤:
 
 ```bash
-cd "$HOME/codyssey/codyssey-basic-b2-2-git-team-collaboration"
+cd "$HOME/codyssey/codyssey-basic-git-collaboration"
 
 bash training/round-01-clear/environment/mac-v/create-simulation-repo.sh
 ```
@@ -81,7 +81,7 @@ GitHub의 Rules/Rulesets 또는 Branch Protection 화면에서 `main`에 적용�
 Account A가 읽을 수 있는 관리자 세션에서:
 
 ```bash
-cd "$HOME/codyssey/codyssey-basic-b2-2-git-team-collaboration"
+cd "$HOME/codyssey/codyssey-basic-git-collaboration"
 
 bash training/round-01-clear/environment/mac-v/verify-simulation-repo.sh \
   <OWNER>/<SIMULATION-REPO> \
@@ -104,6 +104,8 @@ main 보호 상태 확인
 Repository Gate가 PASS한 뒤 Ubuntu 관리자 세션에서:
 
 ```bash
+cd "$HOME/codyssey/codyssey-basic-git-collaboration"
+
 sudo bash training/round-01-clear/environment/mac-v/prepare-simulation-clones.sh \
   <OWNER>/<SIMULATION-REPO>
 ```
