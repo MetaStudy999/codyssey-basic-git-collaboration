@@ -60,7 +60,7 @@ codyssey-b2-2-sim-mac-v
 
 다음 저장소는 Simulation Repository로 재사용하지 않습니다.
 
-- `MetaStudy999/codyssey-basic-b2-2-git-team-collaboration` — Reference/Training Repository
+- `MetaStudy999/codyssey-basic-git-collaboration` — Reference/Training Repository
 - 실제 B2-2 3~5인 팀 Repository — 공식 Evidence 대상
 
 Repository 준비의 Source of Truth:
@@ -71,7 +71,7 @@ Repository 준비의 Source of Truth:
 Account A(`codyssey01`)에서 Identity Gate가 PASS한 뒤 다음 helper로 seed Repository를 만들 수 있습니다.
 
 ```bash
-cd "$HOME/codyssey/codyssey-basic-b2-2-git-team-collaboration"
+cd "$HOME/codyssey/codyssey-basic-git-collaboration"
 
 bash training/round-01-clear/environment/mac-v/create-simulation-repo.sh
 ```
