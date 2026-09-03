@@ -5,7 +5,7 @@ MODE="${1:---check}"
 MACHINE="${B2_2_MAC_V_MACHINE:-codyssey}"
 IMAGE="${B2_2_MAC_V_IMAGE:-ubuntu:noble}"
 CONTROL_REPO="https://github.com/MetaStudy999/codyssey-basic.git"
-B22_REPO="https://github.com/MetaStudy999/codyssey-basic-b2-2-git-team-collaboration.git"
+B22_REPO="https://github.com/MetaStudy999/codyssey-basic-git-collaboration.git"
 
 log() { printf '[MAC-V orchestrate] %s\n' "$*"; }
 fail() { printf '[MAC-V orchestrate][FAIL] %s\n' "$*" >&2; exit 1; }
@@ -109,6 +109,7 @@ prepare_repo() {
       echo \"[FAIL] local changes exist in \$PWD; refusing automatic pull\" >&2
       exit 1
     fi
+    git remote set-url origin \"\$url\"
     git pull --ff-only
     cd ..
   elif [ -e \"\$dir\" ]; then
@@ -120,7 +121,7 @@ prepare_repo() {
 }
 
 prepare_repo codyssey-basic '$CONTROL_REPO'
-prepare_repo codyssey-basic-b2-2-git-team-collaboration '$B22_REPO'
+prepare_repo codyssey-basic-git-collaboration '$B22_REPO'
 "
 
 log "6/7 Control Tower Ubuntu Bootstrap"
@@ -138,7 +139,7 @@ fi
 log "7/7 B2-2 MAC-V CORE 사용자 구조 준비/검증"
 orb -m "$MACHINE" sh -lc '
 set -eu
-cd "$HOME/codyssey/codyssey-basic-b2-2-git-team-collaboration"
+cd "$HOME/codyssey/codyssey-basic-git-collaboration"
 bash training/round-01-clear/environment/mac-v/prepare-core.sh
 '
 
