@@ -41,7 +41,7 @@ Simulation Repository는 다음과 분리하는 것을 기본으로 합니다.
 
 ```text
 B2-2 Reference/Training Repository
-MetaStudy999/codyssey-basic-b2-2-git-team-collaboration
+MetaStudy999/codyssey-basic-git-collaboration
 
 실제 팀 Repository
 실제 3~5인 팀이 사용하는 별도 Repository
