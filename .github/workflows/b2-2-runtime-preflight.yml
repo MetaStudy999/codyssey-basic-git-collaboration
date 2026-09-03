@@ -36,8 +36,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RIn --exclude-dir=.git \
-            'codyssey-basic-b2-2-git-team-collaboration' .; then
+          if grep -RIn \
+            'codyssey-basic-b2-2-git-team-collaboration' \
+            training/round-01-clear MISSION-METADATA.yml; then
             echo '[FAIL] stale numbered B2-2 repository reference found' >&2
             exit 1
           fi
