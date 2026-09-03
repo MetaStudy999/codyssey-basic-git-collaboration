@@ -37,11 +37,19 @@ MAC-V
 
 ## 상태
 
+2026-09-04 실제 `mac-v-orchestrate.sh --prepare` 실행에서 Host/CORE 준비 묶음이 PASS했습니다. 현재 확인된 범위는 OrbStack, `codyssey` Ubuntu 24.04, Control Tower Bootstrap, B2-2 Repository, `codyssey01`~`codyssey05`, HOME/Workspace 구조입니다.
+
 ```text
 Documentation Ready = ✅
-Runtime             = ⬜ NOT RUN
+Host / CORE Prep    = ✅ PASS
 Identity Gate       = ⬜ NOT RUN
+Simulation Repo     = ⬜ NOT RUN
 Simulation          = ⬜ NOT RUN
+Mission CLEAR       = ❌ 아님
 ```
 
-실제 수행 결과가 생길 때만 상태를 갱신합니다.
+상세 기록:
+
+- [`CORE-PREP-2026-09-04.md`](CORE-PREP-2026-09-04.md)
+
+실제 수행 결과가 생길 때만 다음 상태를 갱신합니다.
