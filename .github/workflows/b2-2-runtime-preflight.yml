@@ -1,0 +1,72 @@
+name: B2-2 runtime preflight
+
+on:
+  pull_request:
+    paths:
+      - 'training/round-01-clear/**'
+      - 'MISSION-METADATA.yml'
+      - '.github/workflows/b2-2-runtime-preflight.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'training/round-01-clear/**'
+      - 'MISSION-METADATA.yml'
+      - '.github/workflows/b2-2-runtime-preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify current repository metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fx 'current_mission_id: B2-2' MISSION-METADATA.yml
+          grep -Fx 'repository: MetaStudy999/codyssey-basic-git-collaboration' MISSION-METADATA.yml
+
+      - name: Reject stale numbered repository references
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RIn \
+            'codyssey-basic-b2-2-git-team-collaboration' \
+            training/round-01-clear MISSION-METADATA.yml; then
+            echo '[FAIL] stale numbered B2-2 repository reference found' >&2
+            exit 1
+          fi
+          echo '[PASS] no stale numbered B2-2 repository reference'
+
+      - name: Check shell syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' scripts < <(find training/round-01-clear -type f -name '*.sh' -print0)
+          if ((${#scripts[@]} == 0)); then
+            echo '[FAIL] no shell scripts found under training/round-01-clear' >&2
+            exit 1
+          fi
+          for script in "${scripts[@]}"; do
+            echo "bash -n $script"
+            bash -n "$script"
+          done
+          echo "[PASS] shell syntax: ${#scripts[@]} scripts"
+
+      - name: Verify stable runtime path markers
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F 'B22_REPO="https://github.com/MetaStudy999/codyssey-basic-git-collaboration.git"' \
+            training/round-01-clear/environment/mac-v/mac-v-orchestrate.sh
+          grep -F 'prepare_repo codyssey-basic-git-collaboration' \
+            training/round-01-clear/environment/mac-v/mac-v-orchestrate.sh
+          grep -F '$HOME/codyssey/codyssey-basic-git-collaboration' \
+            training/round-01-clear/environment/mac-v/RUN-NOW.md
+          echo '[PASS] stable B2-2 runtime paths present'
