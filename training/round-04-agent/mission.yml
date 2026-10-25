@@ -1,0 +1,22 @@
+schema_version: "1.0"
+generation: "CODYSSEY Round 02 / 제2기"
+mission_id: "B2-2"
+title: "친구 3~5명과 함께 프로그램 만드는 법 연습하기"
+stable_topic: "git-collaboration"
+repository: "MetaStudy999/codyssey-basic-git-collaboration"
+requirement: "REQUIRED"
+execution_round: round-04-agent
+execution_root: training/round-04-agent
+authoring_root: training/round-04-agent/04-src
+planning_root: training/round-04-agent/00-plan
+test_root: training/round-04-agent/05-tests
+evidence_root: training/round-04-agent/06-evidence
+evaluation_root: training/round-04-agent/07-evaluation
+presentation_root: training/round-04-agent/08-presentation
+handoff_root: training/round-04-agent/09-handoff
+owner_path_directive: APPROVED_2026-10-25
+owner_mission_development_approval: PENDING
+mission_execution: NOT_STARTED
+runtime: NOT_VERIFIED
+clear: NOT_VERIFIED
+legacy_rounds: REFERENCE_ONLY
